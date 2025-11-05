@@ -1,0 +1,605 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 60px; /* فضای هدر ثابت */
+        background: #f0f0f0;
+
+}
+
+
+/* هدر */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #111;
+    color: #fff;
+    position: fixed; /* هدر ثابت */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* سمت راست */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* لوگو */
+.header-right .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* خط عمودی */
+.header-right .divider {
+    width: 1px;
+    height: 30px;
+    background-color: #555;
+}
+
+/* لینک‌ها */
+.nav-links {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #ffcc00;
+}
+
+/* dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background-color: #222;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 10;
+    min-width: 150px;
+}
+
+/* دو ستونه */
+.dropdown-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* لینک‌های داخل dropdown */
+.dropdown-content a {
+    display: block;
+    padding: 5px 10px;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.dropdown-content a:hover {
+    background-color: #333;
+}
+
+/* نمایش dropdown روی hover دسکتاپ */
+@media (min-width: 768px) {
+    .nav-links li .dropdown-content {
+        display: none; /* پیش‌فرض مخفی */
+    }
+    .nav-links li:hover .dropdown-content {
+        display: grid; /* وقتی hover شد نمایش داده شود */
+    }
+}
+
+/* سمت چپ هدر */
+.header-left {
+    display: flex;
+    gap: 15px;
+    
+}
+
+.header-left a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    /* border: 1px solid #fff; */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* .header-left a:hover {
+    background-color: #27ae60;
+    color: #fff;
+} */
+
+/* منوی همبرگر موبایل */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+}
+
+/* موبایل */
+@media (max-width: 767px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #111;
+        flex-direction: column;
+        width: 200px;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .nav-links li {
+        margin-bottom: 10px;
+    }
+    .nav-links li:last-child {
+        margin-bottom: 0;
+    }
+    .nav-links li .dropdown-content {
+        position: relative;
+        top: 0;
+        background-color: #222;
+        padding: 5px;
+        border-radius: 5px;
+        display: none; /* پیش‌فرض مخفی */
+    }
+    .nav-links li.active .dropdown-content {
+        display: grid; /* با کلیک نمایش داده شود */
+    }
+    .menu-toggle {
+        display: flex;
+    }
+}
+/*header part*/
+
+
+  .main-slider {
+    position: relative;
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    direction: ltr;
+  }
+
+  .main-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+  }
+
+  .main-slides img {
+    width: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    
+  }
+
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.7);
+  }
+
+  .prev {
+    left: 20px;
+  }
+
+  .next {
+    right: 20px;
+  }
+
+
+
+    footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  box-shadow: 0 -3px 8px rgba(0,0,0,0.3);
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.footer-right,
+.footer-left {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #00bcd4;
+}
+
+/* Dropdown */
+.dropdown-footer {
+  position: relative;
+  display: inline-block;
+}
+
+.footer-dropdown-content {
+  display: none;
+  position: absolute;
+  bottom: 100%; /* نمایش به سمت بالا */
+  left: 0;
+  background-color: #333;
+  min-width: 150px;
+  box-shadow: 0 -3px 8px rgba(0,0,0,0.3);
+  z-index: 1001;
+  flex-direction: column;
+}
+
+.footer-dropdown-content a {
+  padding: 10px 15px;
+  display: block;
+}
+
+.footer-dropdown-content a:hover {
+  background-color: #444;
+}
+
+.dropdown-footer:hover .footer-dropdown-content {
+  display: flex;
+}
+
+      body {
+      margin: 0;
+      background: #000;
+      font-family: sans-serif;
+      direction: rtl;
+    }
+
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      margin-top: -100px;
+    }
+
+    .movie-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+      aspect-ratio: 16 / 9;
+      transition: transform 0.3s ease;
+    }
+
+    .movie-item:hover {
+      transform: scale(1.05);
+    }
+
+    .poster {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px;
+    }
+
+    /* لایه‌ی اطلاعات روی عکس */
+    .info-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .movie-item:hover .info-overlay {
+      opacity: 1;
+    }
+
+    .info-overlay h3 {
+      margin: 0 0 5px;
+      font-size: 1.1rem;
+    }
+
+    .info-overlay p {
+      margin: 3px 0;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    /* ────────── Filter Wrapper ────────── */
+.filter-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 8px;
+  gap: 8px;
+}
+
+/* ────────── Buttons & Selects ────────── */
+.filter-wrapper select,
+.filter-wrapper button {
+  background: #2c2c2c;
+  color: #ccc;
+  border: 1px solid #3d3d3d;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  appearance: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.filter-wrapper select:hover,
+.filter-wrapper button:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* ────────── Filter Button (First One) ────────── */
+.filter-wrapper .main-filter {
+  background: #3d3d3d;
+  color: #bbb;
+  font-weight: 600;
+  cursor: default;
+}
+
+/* ────────── Toggle Switch (HD only) ────────── */
+.toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #2c2c2c;
+  border: 1px solid #3d3d3d;
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* Switch style */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #555;
+  border-radius: 20px;
+  transition: .3s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px; width: 14px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+input:checked + .slider {
+  background-color: #0078ff;
+}
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+
+/* ────────── Responsive ────────── */
+@media (max-width: 700px) {
+  .filter-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filter-wrapper select,
+  .filter-wrapper button,
+  .toggle-wrap {
+    width: 100%;
+  }
+}
+
+
+
+/* عنوان و لینک مشاهده همه */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.section-header h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.section-header a {
+  color: #f5b041;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.section-header a:hover {
+  text-decoration: underline;
+}
+
+/* نوار کارت‌ها */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+
+.movie-slider {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.movie-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  flex: 0 0 180px;
+  position: relative;
+  transition: transform 0.3s ease;
+  color: #fff;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 260px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.card h4 {
+  text-align: center;
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+/* برچسب رایگان */
+.tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #2ecc71;
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* دکمه‌های ناوبری */
+.nav-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  padding: 8px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 2;
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.slidercontainerprev {
+  right: 10px;
+}
+
+.slidercontainernext {
+  left: 10px;
+}
+
+
+.buysubscribe{
+  background-color: #2ecc71;
+     /* border: 1px solid #fff; */
+
+}
+.buysubscribe:hover {
+  background-color: #27ae60;
+  color: #fff;
+}
+
+.sign-in {
+  background-color: #696767;
+}
